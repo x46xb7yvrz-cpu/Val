@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nnɛnna 🌼❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255,255,255,0.15);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      max-width: 350px;
+      z-index: 2;
+    }
+
+    button {
+      margin: 12px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #yesBtn {
+      background: white;
+      color: #ff4d6d;
+    }
+
+    #noBtn {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      position: absolute;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Celebration */
+    .celebrate {
+      font-size: 22px;
+      animation: pop 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    iframe {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 80px;
+      border-radius: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2 id="title">Hey Nnɛnna 👀</h2>
+    <p id="text">
+      I like how this feels between us…<br>
+      so I won’t overthink it 😌
+    </p>
+
+    <div id="buttons">
+      <button id="yesBtn" onclick="yes()">Yes 💖</button>
+      <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+    </div>
+  </div>
+
+  <!-- Spotify soft background music -->
+  <iframe 
+    src="https://open.spotify.com/embed/track/7HkJv9Qm7fHk7b6wZ0fO4N?utm_source=generator"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+  </iframe>
+
+  <script>
+    let step = 0;
+
+    function yes() {
+      document.getElementById("title").innerText = "YAYYY 🥹❤️";
+      document.getElementById("text").innerHTML =
+        "<span class='celebrate'>You just made me smile for real 😌💐<br>Happy Valentine, Nnɛnna 🌼❤️</span>";
+      document.getElementById("buttons").style.display = "none";
+      celebrateHearts();
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById("noBtn");
+      noBtn.style.top = Math.random() * 200 + "px";
+      noBtn.style.left = Math.random() * 200 + "px";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    function celebrateHearts() {
+      setInterval(createHeart, 300);
+    }
+
+    // ambient hearts
+    setInterval(createHeart, 800);
+  </script>
+
+</body>
+</html>
